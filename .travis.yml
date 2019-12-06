@@ -1,0 +1,39 @@
+language: julia
+os:
+  - linux
+julia:
+  - 1.0
+notifications:
+  email: false
+git:
+  depth: 99999999
+cache:
+  timeout: 1000
+  directories:
+    - downloads
+env:
+  global:
+    - BINARYBUILDER_DOWNLOADS_CACHE=downloads
+    - BINARYBUILDER_AUTOMATIC_APPLE=false
+sudo: required
+
+# Before anything else, get the latest versions of things
+before_script:
+  - julia -e 'using Pkg; pkg"add BinaryProvider"; pkg"add BinaryBuilder#master"; Pkg.build()'
+
+script:
+  - julia build_tarballs.jl
+
+
+deploy:
+    provider: releases
+    api_key:
+        # Note; this api_key is only valid for wbhart/SingularBuilder; you need
+        # to make your own: https://docs.travis-ci.com/user/deployment/releases/
+        secure: mos0rfkWJwt3r5LIDSAhWkYRSsEJh/BSGy0Y0AMgmcww1kpGGErPCKifhNDK1//77n+EH7nvF8d+p1lLF5mV//TclfhZYIeQbwsSMiJ2AEYvKJXnqNRdtpZ98G3AG7a20mBhxQwYVDscXCjrWT+9d9a4KeQxkl5wg1Ju7gzeE7eu5Qk6wcXHLJ03KmImMuUW7a01zoUxMnWzApblbk4syu8eN8YugsvxzC8CJdBGGL4xkDXFmBLwEZVTN7pPHGin5n2NX4DB9KGsA87w4H1qu6RSKL6AM1bPqdedT3laK1DM3O+qtRmDQ2VNiY/DJPI9wq/oFaDRzYdTorNo5W7cC4wZwfK0AW6kBGlDRvqGmTH2Km/DR/t1Qm7EO9DVFFDrda93Ps44XCAUiT50D6ZPzuurwxLkVkjzZqKvzrM5Xhu94n0vV5+lHXv/hScx2z0bAnv7UY+ADY5Vs7TxuWqtSOgk/lWcg0NvI0D3pja3WcJ3t26eDwC4QUKZRjzZXRYbAxyNT54d5oIGhDKcbQGsk+WzLSE/nOGHRb9rj3h2pfa7di9rwP8HmBhnrCvoiKbPqX5RL80y49K09QHeu0YJyYHHe96Gp2cpgRkfysaHWAdzlnAxd+8RnzKIHk7nh3vvUQUVHwYE+GWw+/JNJok4F0RsmZ5WWruEzS249jT25hU=
+    file_glob: true
+    file: products/*
+    skip_cleanup: true
+    on:
+        repo: wbhart/SingularBuilder
+        tags: true
