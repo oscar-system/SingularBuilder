@@ -19,7 +19,7 @@ sudo: required
 
 # Before anything else, get the latest versions of things
 before_script:
-  - julia -e 'using Pkg; pkg"add BinaryProvider"; pkg"add BinaryBuilder#master"; Pkg.build()'
+  - julia -e 'using Pkg; pkg"add BinaryProvider"; pkg"add BinaryBuilder#af0b4853b2b95b1c411f06f834dcbf461bb50264"; Pkg.build()'
 
 script:
   - julia build_tarballs.jl
