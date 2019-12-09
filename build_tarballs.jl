@@ -25,7 +25,7 @@ cd Sources
 cd ..
 mkdir Singular_build
 cd Singular_build
-../Sources/configure --prefix=$prefix --host=$target --libdir=$prefix/lib --disable-static --enable-p-procs-static --disable-p-procs-dynamic --disable-gfanlib --enable-shared --with-readline=no --with-gmp=$prefix --with-flint=$prefix --with-ntl=$prefix --without-python
+../Sources/configure --prefix=$prefix --host=$target --libdir=$prefix/lib --with-libparse --disable-static --enable-p-procs-static --disable-p-procs-dynamic --disable-gfanlib --enable-shared --with-readline=no --with-gmp=$prefix --with-flint=$prefix --with-ntl=$prefix --without-python
 if [ $target = "x86_64-apple-darwin14" ]; then wget ftp://jim.mathematik.uni-kl.de:/pub/Math/Singular/utils/singular-generated.tar.gz; wget ftp://jim.mathematik.uni-kl.de:/pub/Math/Singular/utils/singular-touch.sh; tar -xvf singular-generated.tar.gz; chmod 755 singular-touch.sh; ./singular-touch.sh; fi
 make -j${nproc}
 make install
