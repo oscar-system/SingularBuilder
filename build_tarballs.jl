@@ -44,11 +44,11 @@ platforms = [
 products(prefix) = [
     LibraryProduct(prefix, "libpolys", :libpolys),
     LibraryProduct(prefix, "libSingular", :libsingular),
-    LibraryProduct(prefix, "customstd", :customstd),
-    LibraryProduct(prefix, "subsets", :subsets),
+    # LibraryProduct(prefix, "customstd", :customstd),
+    # LibraryProduct(prefix, "subsets", :subsets),
     ExecutableProduct(prefix, "Singular", :Singular),
-    LibraryProduct(prefix, "syzextra", :syzextra),
-    LibraryProduct(prefix, "interval", :interval),
+    # LibraryProduct(prefix, "syzextra", :syzextra),
+    # LibraryProduct(prefix, "interval", :interval),
     LibraryProduct(prefix, "libfactory", :libfactory),
     LibraryProduct(prefix, "libsingular_resources", :libsingular_resources),
     LibraryProduct(prefix, "libomalloc", :libomalloc)
