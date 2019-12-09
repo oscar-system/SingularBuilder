@@ -47,6 +47,7 @@ products(prefix) = [
     # LibraryProduct(prefix, "customstd", :customstd),
     # LibraryProduct(prefix, "subsets", :subsets),
     ExecutableProduct(prefix, "Singular", :Singular),
+    ExecutableProduct(prefix, "libparse", :libparse),
     # LibraryProduct(prefix, "syzextra", :syzextra),
     # LibraryProduct(prefix, "interval", :interval),
     LibraryProduct(prefix, "libfactory", :libfactory),
