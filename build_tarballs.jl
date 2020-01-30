@@ -3,12 +3,12 @@
 using BinaryBuilder
 
 name = "libsingular"
-version = v"0.0.1"
+version = v"0.0.1-2"
 
 # Collection of sources required to build libsingular
 sources = [
     "https://github.com/Singular/Sources.git" =>
-    "d2a9865cca207801d3b0c05a50dfc5a02724120e",
+    "a17747d8c42415aaf1eace9c5b94db3a73b73dd1",
 
 ]
 
