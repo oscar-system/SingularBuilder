@@ -8,7 +8,7 @@ version = v"0.0.1-2"
 # Collection of sources required to build libsingular
 sources = [
     "https://github.com/Singular/Sources.git" =>
-    "a17747d8c42415aaf1eace9c5b94db3a73b73dd1",
+    "1d8f29959c005b422c8aa69512eee7c45c4bdab1",
 
 ]
 
