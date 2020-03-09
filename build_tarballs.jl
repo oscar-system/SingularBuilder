@@ -3,7 +3,7 @@
 using BinaryBuilder
 
 name = "libsingular"
-version = v"0.0.1-2"
+version = v"0.0.5"
 
 # Collection of sources required to build libsingular
 sources = [
