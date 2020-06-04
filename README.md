@@ -1,6 +1,6 @@
 # SingularBuilder
 
-[![Build Status](https://travis-ci.org/wbhart/SingularBuilder.svg?branch=master)](https://travis-ci.org/wbhart/SingularBuilder)
+[![Build Status](https://travis-ci.org/oscar-system/SingularBuilder.svg?branch=master)](https://travis-ci.org/oscar-system/SingularBuilder)
 
 This repository builds binary artifacts for the libsingular project. Binary artifacts are automatically uploaded to
 [this repository's GitHub releases page](https://github.com/wbhart/SingularBuilder/releases) whenever a tag is created
