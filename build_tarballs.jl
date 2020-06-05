@@ -19,16 +19,38 @@ export HOSTCFLAGS=-I$prefix/include
 export CFLAGS=-I$prefix/include
 export LDFLAGS=-Wl,-rpath,$prefix/lib
 export LD_LIBRARY_PATH=$target/lib:$LD_LIBRARY_PATH
-if [ $target = "x86_64-linux-gnu" ]; then mkdir -p $prefix/x86_64-linux-gnu/lib/../lib64; cp /opt/x86_64-linux-gnu/x86_64-linux-gnu/lib64/libstdc++.la /workspace/destdir/x86_64-linux-gnu/lib/../lib64/; cp /opt/x86_64-linux-gnu/x86_64-linux-gnu/lib64/libstdc++.so /workspace/destdir/x86_64-linux-gnu/lib/../lib64/; fi
+if [ $target = "x86_64-linux-gnu" ]; then
+  mkdir -p $prefix/x86_64-linux-gnu/lib/../lib64
+  cp /opt/x86_64-linux-gnu/x86_64-linux-gnu/lib64/libstdc++.la /workspace/destdir/x86_64-linux-gnu/lib/../lib64/
+  cp /opt/x86_64-linux-gnu/x86_64-linux-gnu/lib64/libstdc++.so /workspace/destdir/x86_64-linux-gnu/lib/../lib64/
+fi
 cd Sources
 ./autogen.sh
 cd ..
 mkdir Singular_build
 cd Singular_build
-../Sources/configure --prefix=$prefix --host=$target --libdir=$prefix/lib --with-libparse --disable-static --enable-p-procs-static --disable-p-procs-dynamic --disable-gfanlib --enable-shared --with-readline=no --with-gmp=$prefix --with-flint=$prefix --with-ntl=$prefix --without-python
-if [ $target = "x86_64-apple-darwin14" ]; then wget ftp://jim.mathematik.uni-kl.de:/pub/Math/Singular/utils/singular-generated.tar.gz; wget ftp://jim.mathematik.uni-kl.de:/pub/Math/Singular/utils/singular-touch.sh; tar -xvf singular-generated.tar.gz; chmod 755 singular-touch.sh; ./singular-touch.sh; fi
-make -j${nproc}
-make install
+../Sources/configure --prefix=$prefix --host=$target --libdir=$prefix/lib \
+    --with-libparse \
+    --disable-static \
+    --enable-p-procs-static \
+    --disable-p-procs-dynamic \
+    --disable-gfanlib \
+    --enable-shared \
+    --with-readline=no \
+    --with-gmp=$prefix \
+    --with-flint=$prefix \
+    --with-ntl=$prefix \
+    --without-python
+
+if [ $target = "x86_64-apple-darwin14" ]; then
+  wget ftp://jim.mathematik.uni-kl.de:/pub/Math/Singular/utils/singular-generated.tar.gz
+  wget ftp://jim.mathematik.uni-kl.de:/pub/Math/Singular/utils/singular-touch.sh
+  tar -xvf singular-generated.tar.gz
+  chmod 755 singular-touch.sh
+  ./singular-touch.sh
+fi
+make -j${nproc} V=1
+make install V=1
 exit
 
 """
