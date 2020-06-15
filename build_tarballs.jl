@@ -49,8 +49,8 @@ if [ $target = "x86_64-apple-darwin14" ]; then
   chmod 755 singular-touch.sh
   ./singular-touch.sh
 fi
-make -j${nproc} V=1
-make install V=1
+make -j${nproc}
+make install
 exit
 
 """
