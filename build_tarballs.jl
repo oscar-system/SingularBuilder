@@ -19,6 +19,7 @@ export HOSTCFLAGS=-I$prefix/include
 export CFLAGS=-I$prefix/include
 export LDFLAGS=-Wl,-rpath,$prefix/lib
 export LD_LIBRARY_PATH=$target/lib:$LD_LIBRARY_PATH
+export AR=/opt/$target/bin/$target-ar
 if [ $target = "x86_64-linux-gnu" ]; then
   mkdir -p $prefix/x86_64-linux-gnu/lib/../lib64
   cp /opt/x86_64-linux-gnu/x86_64-linux-gnu/lib64/libstdc++.la /workspace/destdir/x86_64-linux-gnu/lib/../lib64/
