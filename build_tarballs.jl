@@ -20,16 +20,13 @@ export LDFLAGS=-Wl,-rpath,$prefix/lib
 export LD_LIBRARY_PATH=$target/lib:$LD_LIBRARY_PATH
 export AR=/opt/$target/bin/$target-ar
 if [ $target = "x86_64-linux-gnu" ]; then
-  mkdir -p $prefix/x86_64-linux-gnu/lib/../lib64
-  cp /opt/x86_64-linux-gnu/x86_64-linux-gnu/lib64/libstdc++.la /workspace/destdir/x86_64-linux-gnu/lib/../lib64/
-  cp /opt/x86_64-linux-gnu/x86_64-linux-gnu/lib64/libstdc++.so /workspace/destdir/x86_64-linux-gnu/lib/../lib64/
+  mkdir -p $prefix/x86_64-linux-gnu/lib64
+  cp /opt/x86_64-linux-gnu/x86_64-linux-gnu/lib64/libstdc++.la /workspace/destdir/x86_64-linux-gnu/lib64/
+  cp /opt/x86_64-linux-gnu/x86_64-linux-gnu/lib64/libstdc++.so /workspace/destdir/x86_64-linux-gnu/lib64/
 fi
 cd Sources
 ./autogen.sh
-cd ..
-mkdir Singular_build
-cd Singular_build
-../Sources/configure --prefix=$prefix --host=$target --libdir=$prefix/lib \
+./configure --prefix=$prefix --host=$target --libdir=$prefix/lib \
     --with-libparse \
     --disable-static \
     --enable-p-procs-static \
