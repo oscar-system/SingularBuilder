@@ -8,8 +8,7 @@ version = v"0.0.9"
 # Collection of sources required to build libsingular
 sources = [
     "https://github.com/Singular/Sources.git" =>
-    "ae2e290177fd5de77a3afac81e53b9da8977da9a",
-
+    "4c1fc06f2d81e12a8e75a5419444cb157fbe45e9",
 ]
 
 # Bash recipe for building across all platforms
@@ -43,13 +42,6 @@ cd Singular_build
     --with-ntl=$prefix \
     --without-python
 
-if [ $target = "x86_64-apple-darwin14" ]; then
-  wget ftp://jim.mathematik.uni-kl.de:/pub/Math/Singular/utils/singular-generated.tar.gz
-  wget ftp://jim.mathematik.uni-kl.de:/pub/Math/Singular/utils/singular-touch.sh
-  tar -xvf singular-generated.tar.gz
-  chmod 755 singular-touch.sh
-  ./singular-touch.sh
-fi
 make -j${nproc}
 make install
 exit
